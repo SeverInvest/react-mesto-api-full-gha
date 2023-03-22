@@ -1,0 +1,121 @@
+@import "../../vars";
+
+.form-register {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 80px;
+  height: var(--height-without-header-ladge);
+
+
+  &__header {
+    min-height: 139px;
+    box-sizing: border-box;
+
+    &__text {
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 1.2;
+      padding: 60px 0 50px;
+      margin: 0;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(var(--height-without-header-ladge) - 139px);
+    width: var(--width-form-register-ladge);
+  }
+
+  &__input {
+    min-height: 19px;
+    box-sizing: border-box;
+    border-bottom: var(--border-bottom2);
+
+    &__content {
+      box-sizing: border-box;
+      border: 0;
+      font-size: 14px;
+      line-height: 1.2;
+      min-width: var(--width-form-register-ladge);
+      margin-bottom: 13px;
+    }
+  }
+
+  &__validation {
+    min-height: 30px;
+  }
+
+  &__submit {
+    margin: 0 auto;
+    width: var(--width-form-register-ladge);
+    height: 50px;
+    border-radius: 2px;
+    transition: var(--transition);
+    cursor: pointer;
+
+    &:hover {
+      opacity: var(--opacity);
+    }
+  }
+
+  &__additionally {
+    text-align: center;
+    padding-top: 15px;
+    width: var(--width-form-register-ladge);
+    min-height: 32px;
+    font-size: 14px;
+    line-height: 1.2;
+
+    &__link {
+      padding-left: 5px;
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+
+      &:hover {
+        opacity: var(--opacity);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .form-register {
+    padding-bottom: 40px;
+    height: var(--height-without-header-small);
+
+    &__header {
+      min-height: 104px;
+
+      &__text {
+        font-size: 20px;
+        padding: 40px 0 40px;
+      }
+    }
+
+    &__form {
+      height: var(--height-without-header-ladge);
+      width: var(--width-form-register-small);
+    }
+
+    &__input {
+      &__content {
+        min-width: var(--width-form-register-small);
+      }
+    }
+
+    &__submit {
+      width: var(--width-form-register-small);
+    }
+
+    &__additionally {
+      width: var(--width-form-register-small);
+    }
+  }
+}

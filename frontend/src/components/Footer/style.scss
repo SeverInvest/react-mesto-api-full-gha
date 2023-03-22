@@ -1,0 +1,35 @@
+.footer {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto;
+  padding: 67px 0 60px;
+  max-width: 880px;
+
+  &__copyright {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #545454;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .footer {
+    max-width: 581px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer {
+    max-width: 282px;
+    padding: 48px 19px 36px;
+    align-items: flex-start;
+
+    &__copyright {
+      font-size: 14px;
+    }
+  }
+}

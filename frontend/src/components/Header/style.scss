@@ -1,0 +1,97 @@
+@import "../../mixins";
+@import "../../vars";
+
+.header {
+  @include padding-margin-null-auto();
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width-large);
+  min-height: var(--min-height-header-ladge);
+  border-bottom: var(--border-bottom);
+
+  &__logo {
+    width: 142px;
+    height: 33px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__link {
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--color-light);
+    text-decoration: none;
+    transition: var(--transition);
+
+    &:hover {
+      opacity: var(--opacity);
+    }
+
+    &_exit {
+      color: var(--color-gray);
+    }
+  }
+
+  &__email {
+    font-weight: 500;
+    padding-right: 24px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .header {
+    box-sizing: border-box;
+    min-height: var(--min-height-header-small);
+    padding-left: 30px;
+    padding-right: 30px;
+
+    &__logo {
+      width: 104px;
+      height: 24px;
+    }
+
+    &__container {
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: var(--border-bottom);
+      &_top {
+        padding: 40px 0;
+      }
+    }
+    &__link {
+      font-size: 14px;
+      &_top {
+        font-size: 18px;
+      }
+    }
+
+    &__email {
+      font-size: 18px;
+      padding: 0;
+    }
+
+    &__nav-btn {
+      border: none;
+      margin-right: 0;
+      height: 24px;
+      width: 24px;
+      padding: 0;
+      cursor: pointer;
+      background: no-repeat url(../../images/hamburger.svg) center;
+      transition: opacity .3s ease-in-out;
+
+      &_close {
+        background: no-repeat url(../../images/close_icon.svg) center;
+      }
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+}

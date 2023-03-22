@@ -1,0 +1,116 @@
+.card {
+  margin: 0;
+  padding: 0;
+  background: #FFFFFF;
+  border-radius: 10px;
+  width: 282px;
+  height: 361px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+
+  &__photo {
+    width: 282px;
+    height: 282px;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    background-color: black;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+
+  &__footer {
+    margin: 0;
+    padding: 22px 19px 0 21px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__description {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #000000;
+    padding: 0;
+    margin: 0;
+    max-width: 188px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__heart-and-count-likes {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+  }
+
+  &__heart {
+    padding: 0;
+    align-self: center;
+    width: 22px;
+    height: 19px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../../images/heart.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+
+    &:hover {
+      opacity: .6;
+    }
+
+    &_active {
+      background-image: url("../../images/heart_black.svg");
+    }
+  }
+
+  &__remove-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0;
+    margin: 0;
+    width: 18px;
+    height: 19px;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../../images/trash.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    z-index: 2;
+    visibility: hidden;
+
+    &:hover {
+      opacity: .6;
+    }
+
+    &_visible {
+      visibility: visible;
+    }
+  }
+
+  &__count-likes {
+    padding-top: 2px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+  }
+}

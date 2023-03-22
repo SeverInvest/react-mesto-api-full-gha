@@ -1,0 +1,77 @@
+.popup {
+  &__container {
+    padding: 34px 36px 37px;
+    margin: 0;
+    width: 430px;
+    max-height: 330px;
+    background: #FFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    box-sizing: border-box;
+    position: relative;
+
+    &_center {
+      padding: 60px 36px;
+      align-items: center;
+    }
+  }
+
+  &__header {
+    margin: 0;
+    padding: 0 0 37px;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #000000;
+
+    &_center {
+      text-align: center;
+      padding: 32px 0 0;
+    }
+  }
+
+  &__icon {
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+
+    &_successfull {
+      background-image: url("../../images/successful.svg");
+    }
+
+    &_unsuccessfull {
+      background-image: url("../../images/unsuccessful.svg");
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .popup {
+    &__container {
+      width: 282px;
+      max-height: 322px;
+      padding: 25px 22px;
+
+      &_center {
+        padding: 50px 18px;
+        align-items: center;
+      }
+    }
+
+    &__header {
+      font-size: 18px;
+      padding: 0 0 62px;
+
+      &_center {
+        text-align: center;
+        padding: 40px 0 0;
+      }
+    }
+
+  }
+}
