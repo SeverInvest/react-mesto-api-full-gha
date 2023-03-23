@@ -100,5 +100,5 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "frontend/build/*"
+          source: "frontend/build"
           target: "/home/nikolay/pr15/frontend"
