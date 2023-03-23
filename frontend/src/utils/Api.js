@@ -8,25 +8,19 @@ class Api extends BaseApi {
   }
 
   getInitialCards() {
-    return super._request(
+    return this._requestWithToken(
       '/cards',
       {
-        method: "GET",
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include'
+        method: "GET"
       }
     )
   }
 
   getUser() {
-    return super._request(
+    return this._requestWithToken(
       '/users/me',
       {
-        method: "GET",
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include'
+        method: "GET"
       }
     )
   }
@@ -36,26 +30,20 @@ class Api extends BaseApi {
   }
 
   setUserInfo(info) {
-    return super._request(
+    return this._requestWithToken(
       '/users/me',
       {
         method: 'PATCH',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include',
         body: JSON.stringify(info)
       }
     )
   }
 
   setCard(info) {
-    return super._request(
+    return this._requestWithToken(
       '/cards',
       {
         method: "POST",
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include',
         body: JSON.stringify(info)
       }
     )
@@ -63,37 +51,28 @@ class Api extends BaseApi {
 
   toggleLikeCard({ idCard, methodCardLike }) {
 
-    return super._request(
+    return this._requestWithToken(
       `/cards/${idCard}/likes`,
       {
-        method: methodCardLike,
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include'
+        method: methodCardLike
       }
     )
   }
 
   deleteCard(idCard) {
-    return super._request(
+    return this._requestWithToken(
       `/cards/${idCard}`,
       {
-        method: "DELETE",
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include'
+        method: "DELETE"
       }
     )
   }
 
   setAvatar(info) {
-    return super._request(
+    return this._requestWithToken(
       '/users/me/avatar',
       {
         method: "PATCH",
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include',
         body: JSON.stringify(info)
       }
     )

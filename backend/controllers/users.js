@@ -34,7 +34,7 @@ module.exports.getUsers = (_, res, next) => {
     .then((users) => {
       res
         .status(STATUS_OK)
-        .send({ data: users });
+        .send({ users });
     })
     .catch(next);
 };
@@ -88,13 +88,8 @@ module.exports.login = (req, res, next) => {
         { expiresIn: '7d' },
       );
       res
-        .cookie('jwt', token, {
-          maxAge: 3600000 * 24 * 7,
-          httpOnly: true,
-          sameSite: true,
-        })
         .status(STATUS_OK)
-        .send({ message: 'Successfully logging in' });
+        .send({ token });
     })
     .catch(next);
 };

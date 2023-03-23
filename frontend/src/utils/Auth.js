@@ -2,13 +2,13 @@
 import connect from './connect.js';
 import BaseApi from './BaseApi.js';
 
-class Auth extends BaseApi{
+class Auth extends BaseApi {
   constructor() {
     super(connect);
   }
 
   register(email, password) {
-    return super._request(
+    return super._requestWithoutToken(
       '/signup',
       {
         method: 'POST',
@@ -18,7 +18,7 @@ class Auth extends BaseApi{
   };
 
   authorize(email, password) {
-    return super._request(
+    return super._requestWithoutToken(
       '/signin',
       {
         method: 'POST',
@@ -27,15 +27,12 @@ class Auth extends BaseApi{
     )
   };
 
-  checkToken() {
-    return super._request('/users/me',
-      {
-        method: "GET",
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'include'
-      }
-    )
+  checkToken(token) {
+    return super._requestCheckToken(token, '/users/me',
+        {
+          method: "GET"
+        }
+      )
   };
 }
 

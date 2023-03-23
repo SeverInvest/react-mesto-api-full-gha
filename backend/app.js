@@ -14,13 +14,13 @@ mongoose.set('strictQuery', false);
 
 const app = express();
 app.use(helmet());
+app.use(express.json());
+mongoose.connect(addressDB);
 app.use(cors({
   origin: addressCors,
   credentials: true,
 }));
-app.use(express.json());
-mongoose.connect(addressDB);
-
+// app.use(cors());
 app.use(cookieParser());
 app.use(requestLogger);
 app.use(router);

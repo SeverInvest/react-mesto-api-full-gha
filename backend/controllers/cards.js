@@ -14,7 +14,7 @@ function searchCardAndUpdate(cardId, method, res, next) {
     })
     .populate(['owner', 'likes'])
     .then((card) => {
-      res.status(STATUS_OK).send({ data: card });
+      res.status(STATUS_OK).send(card);
     })
     .catch(next);
 }
@@ -31,7 +31,7 @@ module.exports.createCard = (req, res, next) => {
   const ownerId = req.user._id;
   Cards.create({ name, link, owner: ownerId })
     .then((card) => {
-      res.status(STATUS_CREATED).send({ data: card });
+      res.status(STATUS_CREATED).send(card);
     })
     .catch(next);
 };

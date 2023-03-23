@@ -94,8 +94,8 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
     api.toggleLikeCard({ idCard: card._id, methodCardLike: isLiked ? "DELETE" : "PUT" })
-      .then((newCard) => {
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+      .then((upadtedCard) => {
+        setCards((state) => state.map((c) => c._id === card._id ? upadtedCard : c));
       })
       .catch(isError)
   }
@@ -129,19 +129,19 @@ function App() {
       })
   }
 
-  function handleRegister({ email, password}) {
+  function handleRegister({ email, password }) {
     auth.register(email, password)
-    .then(() => {
-      onSuccess(true);
-      setIsInfoTooltipPopupOpen(true);
-      navigate('/sign-in', { replace: true });
-    }
-    )
-    .catch((error) => {
-      onSuccess(false);
-      setIsInfoTooltipPopupOpen(true);
-      isError(error);
-    }) 
+      .then(() => {
+        onSuccess(true);
+        setIsInfoTooltipPopupOpen(true);
+        navigate('/sign-in', { replace: true });
+      }
+      )
+      .catch((error) => {
+        onSuccess(false);
+        setIsInfoTooltipPopupOpen(true);
+        isError(error);
+      })
   }
 
   function onSuccess(isSuccess) {
@@ -150,28 +150,28 @@ function App() {
 
   function handleLogin({ email, password }) {
     auth.authorize(email, password)
-    .then((data) => {
-      // console.log(data.message);
-      if (data.message === 'Successfully logging in') {
-        // localStorage.setItem('jwt', data.token);
-        setLoggedIn(true);
-        navigate('/', { replace: true });
-      }
-    })
-    .catch((error) => {
-      onSuccess(false);
-      setIsInfoTooltipPopupOpen(true);
-      isError(error);
-    })
+      .then(({ token }) => {
+        if (token) {
+          localStorage.setItem('jwt', token);
+          setLoggedIn(true);
+          navigate('/', { replace: true });
+        }
+      })
+      .catch((error) => {
+        onSuccess(false);
+        setIsInfoTooltipPopupOpen(true);
+        isError(error);
+      })
   }
 
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
-      // const jwt = localStorage.getItem('jwt');
-      auth.checkToken()
-        .then((res) => {
+      const jwt = localStorage.getItem('jwt');
+      console.log(jwt);
+      auth.checkToken(jwt)
+        .then((user) => {
           setLoggedIn(true);
-          setEmail(res.data.email);
+          setEmail(user.email);
           navigate("/", { replace: true });
         })
         .catch(isError)
@@ -190,7 +190,7 @@ function App() {
   }, [loggedIn]);
 
   function handleSingOut() {
-    // localStorage.removeItem("jwt");
+    localStorage.removeItem("jwt");
     setEmail("");
     setLoggedIn(false);
     navigate("/sign-in", { replace: true });
@@ -219,7 +219,8 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header email={email}
+        <Header
+          email={email}
           onSignOut={handleSingOut}
           loggedIn={loggedIn}
         />
