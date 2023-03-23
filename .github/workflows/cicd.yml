@@ -84,7 +84,7 @@ jobs:
     needs: test_config
     runs-on: ubuntu-latest
     steps:
-      - run: ping -c 5 ${{ secrets.HOST }}
+      - run: ping -c 5 51.250.55.209
       - name: Clone repository
         uses: actions/checkout@v2
       - name: Use Node.js 18.x
