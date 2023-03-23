@@ -79,3 +79,26 @@ jobs:
   #         pnpm i --frozen-lockfile --prefix web-autotest-public/
   #   - name: Run test endpoints
   #     run: make proj15-test-endpoints
+
+  build:
+    needs: test_config
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+      - name: Install dependencies
+        run: cd frontend && npm install
+      - name: Generate build
+        run: cd frontend && npm run build
+      - name: copy file via ssh password
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: "frontend/build/*"
+          target: "/home/nikolay/pr15/frontend"
