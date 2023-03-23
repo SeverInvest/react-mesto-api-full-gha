@@ -102,3 +102,4 @@ jobs:
           key: ${{ secrets.KEY }}
           source: "frontend/build"
           target: "/home/nikolay/pr15/frontend"
+          debug: true
