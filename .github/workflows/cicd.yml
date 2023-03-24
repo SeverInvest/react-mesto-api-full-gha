@@ -84,7 +84,7 @@ jobs:
     needs: test_config
     runs-on: ubuntu-latest
     steps:
-      - run: ping -c 5 8.8.8.8
+      - run: ping -c 5 81.177.174.185
       - run: ping -c 5 51.250.55.209
       - name: Clone repository
         uses: actions/checkout@v2
