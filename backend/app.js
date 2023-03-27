@@ -18,7 +18,7 @@ app.use(express.json());
 mongoose.connect(addressDB);
 app.use(cors({
   origin: addressCors,
-  credentials: true,
+  // credentials: true,
 }));
 // app.use(cors());
 app.use(cookieParser());
