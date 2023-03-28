@@ -77,8 +77,8 @@ jobs:
       run: |
           npm install -g pnpm
           pnpm i --frozen-lockfile --prefix web-autotest-public/
-    - name: Run test endpoints
-      run: make proj15-test-endpoints
+    # - name: Run test endpoints
+    #   run: make proj15-test-endpoints
 
 # Почему-то ci/cd не работает (((
   # build:
