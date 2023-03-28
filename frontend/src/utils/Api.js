@@ -9,7 +9,6 @@ class Api extends BaseApi {
 
   getInitialCards() {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       '/cards',
       {
         method: "GET"
@@ -19,7 +18,6 @@ class Api extends BaseApi {
 
   getUser() {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       '/users/me',
       {
         method: "GET"
@@ -33,7 +31,6 @@ class Api extends BaseApi {
 
   setUserInfo(info) {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       '/users/me',
       {
         method: 'PATCH',
@@ -44,7 +41,6 @@ class Api extends BaseApi {
 
   setCard(info) {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       '/cards',
       {
         method: "POST",
@@ -55,7 +51,6 @@ class Api extends BaseApi {
 
   toggleLikeCard({ idCard, methodCardLike }) {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       `/cards/${idCard}/likes`,
       {
         method: methodCardLike
@@ -65,7 +60,6 @@ class Api extends BaseApi {
 
   deleteCard(idCard) {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       `/cards/${idCard}`,
       {
         method: "DELETE"
@@ -75,7 +69,6 @@ class Api extends BaseApi {
 
   setAvatar(info) {
     return super._requestWithToken(
-      localStorage.getItem('jwt'),
       '/users/me/avatar',
       {
         method: "PATCH",

@@ -3,9 +3,7 @@
 export default class BaselApi {
   constructor(connect) {
     this._baseUrl = connect.baseUrl;
-    this._headers = connect._headers;
-    // this._headersWithoutToken = connect.headersWithoutToken;
-    // this._headersWithToken = connect.headersWithToken;
+    this._headers = connect.headers;
 }
   _checkResponse(result) {
     if (result.ok) {
@@ -14,10 +12,10 @@ export default class BaselApi {
     return Promise.reject(`Ошибка: ${result.status}`);
   }
 
-  _requestWithToken(token, url, options) {
+  _requestWithToken(url, options) {
+    const token = localStorage.getItem('jwt');
     return fetch(
       `${this._baseUrl}${url}`,
-      // Object.assign(options, { headers: this._headersWithToken })
       Object.assign(options, { headers: { ...this._headers, "Authorization": `Bearer ${token}`, } })
     )
       .then(this._checkResponse)
@@ -30,13 +28,4 @@ export default class BaselApi {
     )
       .then(this._checkResponse)
   }
-
-  // _requestCheckToken(token, url, options) {
-  //   return fetch(
-  //     `${this._baseUrl}${url}`,
-  //     Object.assign(options, { headers: { ...this._headers, "Authorization": `Bearer ${token}`, } })
-  //   )
-  //     .then(this._checkResponse)
-  // }
-
 }

@@ -26,16 +26,6 @@ class Auth extends BaseApi {
       }
     )
   };
-
-  checkToken(token) {
-    return super._requestWithToken(
-      token,
-      '/users/me',
-      {
-        method: "GET"
-      }
-    )
-  };
 }
 
 const auth = new Auth(connect);

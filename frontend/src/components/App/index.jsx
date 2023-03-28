@@ -166,9 +166,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
-      const jwt = localStorage.getItem('jwt');
-      console.log(jwt);
-      auth.checkToken(jwt)
+      api.getUser()
         .then((user) => {
           setLoggedIn(true);
           setEmail(user.email);
