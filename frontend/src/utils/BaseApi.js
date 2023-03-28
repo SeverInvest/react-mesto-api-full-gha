@@ -3,8 +3,9 @@
 export default class BaselApi {
   constructor(connect) {
     this._baseUrl = connect.baseUrl;
-    this._headersWithoutToken = connect.headersWithoutToken;
-    this._headersWithToken = connect.headersWithToken;
+    this._headers = connect._headers;
+    // this._headersWithoutToken = connect.headersWithoutToken;
+    // this._headersWithToken = connect.headersWithToken;
 }
   _checkResponse(result) {
     if (result.ok) {
@@ -13,10 +14,11 @@ export default class BaselApi {
     return Promise.reject(`Ошибка: ${result.status}`);
   }
 
-  _requestWithToken(url, options) {
+  _requestWithToken(token, url, options) {
     return fetch(
       `${this._baseUrl}${url}`,
-      Object.assign(options, { headers: this._headersWithToken })
+      // Object.assign(options, { headers: this._headersWithToken })
+      Object.assign(options, { headers: { ...this._headers, "Authorization": `Bearer ${token}`, } })
     )
       .then(this._checkResponse)
   }
@@ -24,7 +26,7 @@ export default class BaselApi {
   _requestWithoutToken(url, options) {
     return fetch(
       `${this._baseUrl}${url}`,
-      Object.assign(options, { headers: this._headersWithoutToken })
+      Object.assign(options, { headers: this._headers })
     )
       .then(this._checkResponse)
   }
@@ -32,7 +34,7 @@ export default class BaselApi {
   _requestCheckToken(token, url, options) {
     return fetch(
       `${this._baseUrl}${url}`,
-      Object.assign(options, { headers: { ...this._headersWithoutToken, "Authorization": `Bearer ${token}`, } })
+      Object.assign(options, { headers: { ...this._headers, "Authorization": `Bearer ${token}`, } })
     )
       .then(this._checkResponse)
   }
