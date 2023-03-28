@@ -28,11 +28,13 @@ class Auth extends BaseApi {
   };
 
   checkToken(token) {
-    return super._requestCheckToken(token, '/users/me',
-        {
-          method: "GET"
-        }
-      )
+    return super._requestWithToken(
+      token,
+      '/users/me',
+      {
+        method: "GET"
+      }
+    )
   };
 }
 

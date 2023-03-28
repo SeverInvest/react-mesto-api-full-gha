@@ -31,12 +31,12 @@ export default class BaselApi {
       .then(this._checkResponse)
   }
 
-  _requestCheckToken(token, url, options) {
-    return fetch(
-      `${this._baseUrl}${url}`,
-      Object.assign(options, { headers: { ...this._headers, "Authorization": `Bearer ${token}`, } })
-    )
-      .then(this._checkResponse)
-  }
+  // _requestCheckToken(token, url, options) {
+  //   return fetch(
+  //     `${this._baseUrl}${url}`,
+  //     Object.assign(options, { headers: { ...this._headers, "Authorization": `Bearer ${token}`, } })
+  //   )
+  //     .then(this._checkResponse)
+  // }
 
 }
