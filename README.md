@@ -17,11 +17,11 @@ https://github.com/SeverInvest/react-mesto-api-full-gha
 
 ### Ссылки на проект
 
+IP 51.250.55.209
+
 Frontend https://sivnv.ru
 
 Backend https://api.sivnv.ru
-
-IP-address ВМ Yandex.cloud 51.250.55.209 (вход по IP заблокирован в целях безопасности)
 
 ### Ссылка на мою статью в Дзен (туториал выполнения этого проекта)
 
