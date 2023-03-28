@@ -1,6 +1,6 @@
 const connect = {
   "baseUrl":
-    "http://api.sivnv.ru",
+    "https://api.sivnv.ru",
   "headers": {
     "Accept": "application/json",
     "Content-Type": "application/json"
