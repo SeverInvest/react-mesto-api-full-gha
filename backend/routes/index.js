@@ -6,6 +6,12 @@ const { createUser, login } = require('../controllers/users');
 const { authValidate, registerValidate } = require('../middlewares/validation');
 const auth = require('../middlewares/auth');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.post('/signup', registerValidate, createUser);
 router.post('/signin', authValidate, login);
 router.use(auth);
