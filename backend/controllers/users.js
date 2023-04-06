@@ -30,7 +30,7 @@ function updateUser(userId, values, res, next) {
 }
 
 module.exports.getCountUsers = (_, res, next) => {
-  User.find().count()
+  User.countDocuments()
     .then((number) => {
       res
         .status(STATUS_OK)
