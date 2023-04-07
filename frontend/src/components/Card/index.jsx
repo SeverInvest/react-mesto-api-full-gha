@@ -6,14 +6,7 @@ function Card({ onCardClick, onCardLike, onCardDeleteConfirm, card }) {
 
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id || card.owner === currentUser._id;
-  console.log(`card: ${card._id}, 
-  card.owner._id: ${card.owner._id}, 
-  currentUser._id: ${currentUser._id}, 
-  isOwn: ${isOwn}, 
-  card: ${card}`)
-  //const cardRemoveClassName = `card__remove-button ${isOwn ? "card__remove-button_visible" : ""}`;
-
-  const isLiked = card.likes.some((i) => i._id === currentUser._id);
+   const isLiked = card.likes.some((i) => i._id === currentUser._id);
   const cardLikeClassName = `card__heart ${isLiked ? "card__heart_active" : ""}`;
 
   function handleClick() {
