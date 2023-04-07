@@ -6,6 +6,7 @@ function Card({ onCardClick, onCardLike, onCardDeleteConfirm, card }) {
 
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id;
+  console.log(`card: ${card._id}, card.owner._id: ${card.owner._id}, currentUser._id: ${currentUser._id}, isOwn: ${isOwn}` )
   //const cardRemoveClassName = `card__remove-button ${isOwn ? "card__remove-button_visible" : ""}`;
 
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
