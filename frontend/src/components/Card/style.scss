@@ -96,7 +96,7 @@
     cursor: pointer;
     transition: opacity .3s ease-in-out;
     z-index: 2;
-    visibility: hidden;
+    // visibility: hidden;
 
     &:hover {
       opacity: .6;
