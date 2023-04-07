@@ -25,17 +25,8 @@ class Api extends BaseApi {
     )
   }
 
-  getCountUsers() {
-    return super._requestWithToken(
-      '/users/count',
-      {
-        method: "GET"
-      }
-    )
-  }
-
   getInitialData() {
-    return Promise.all([this.getUser(), this.getInitialCards(), this.getCountUsers()])
+    return Promise.all([this.getUser(), this.getInitialCards()])
   }
 
   setUserInfo(info) {

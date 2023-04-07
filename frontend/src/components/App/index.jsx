@@ -31,7 +31,6 @@ function App() {
   const [isInfoTooltipPopupOpen, setIsInfoTooltipPopupOpen] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [buttonText, setButtonText] = useState("Сохранить");
-  const [countUsers, setCountUsers] = useState(0);
 
   const navigate = useNavigate();
 
@@ -180,10 +179,9 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       api.getInitialData()
-        .then(([user, cards, number]) => {
+        .then(([user, cards]) => {
           setCurrentUser(user);
           setCards(cards);
-          setCountUsers(number)
         })
         .catch(isError)
     }
@@ -223,7 +221,6 @@ function App() {
           email={email}
           onSignOut={handleSingOut}
           loggedIn={loggedIn}
-          countUsers={countUsers}
         />
 
         <Routes>

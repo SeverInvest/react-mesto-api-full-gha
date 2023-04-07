@@ -29,16 +29,6 @@ function updateUser(userId, values, res, next) {
     .catch(next);
 }
 
-module.exports.getCountUsers = (_, res, next) => {
-  User.find().count()
-    .then((number) => {
-      res
-        .status(STATUS_OK)
-        .send({ number });
-    })
-    .catch(next);
-};
-
 module.exports.getUsers = (_, res, next) => {
   User.find()
     .then((users) => {

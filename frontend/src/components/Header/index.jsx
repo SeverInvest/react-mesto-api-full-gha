@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import HeaderLink from "../HeaderLink"
 import "./style.scss";
 
-function Header({ onSignOut, email, loggedIn, countUsers }) {
+function Header({ onSignOut, email, loggedIn }) {
 
   const [currentWidth, setCurrentWidth] = useState(window.innerWidth);
   const [hamburgerOn, setHamburgerOn] = useState(false);
@@ -51,14 +51,11 @@ function Header({ onSignOut, email, loggedIn, countUsers }) {
       }
 
       < header className="header" >
-        <>
         <img
           className="header__logo"
           src={images.logoWhite}
           alt="логотип сайта"
         />
-        <p>Пользователи: {countUsers}</p>
-        </>
         <Routes>
           <Route
             path="/sign-in"
