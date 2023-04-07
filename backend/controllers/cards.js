@@ -22,7 +22,7 @@ function searchCardAndUpdate(cardId, method, res, next) {
 module.exports.getCard = (req, res, next) => {
   Cards.find({})
     .populate(['owner', 'likes'])
-    .sort({ createdAt: -1 })
+    .sort({ createdAt: 'desc' })
     .then((cards) => res.status(STATUS_OK).send(cards))
     .catch(next);
 };
