@@ -118,6 +118,7 @@ function App() {
   }
 
   function handleAddPlaceSubmit(data) {
+    console.log(data);
     api.setCard(data)
       .then((newCard) => {
         setCards([newCard, ...cards]);
